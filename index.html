@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arthur — games, music and books</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef1f6; --surface:#ffffff; --ink:#172033; --muted:#5b6578; --line:#d5dbe6;
+  --accent:#2f5bff; --accent-ink:#ffffff; --spark:#ffb81c;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#10151f; --surface:#1a2130; --ink:#eaeef7; --muted:#9aa5ba; --line:#2b3547;
+    --accent:#7d9bff; --accent-ink:#10151f; --spark:#ffc94d;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10151f; --surface:#1a2130; --ink:#eaeef7; --muted:#9aa5ba; --line:#2b3547;
+  --accent:#7d9bff; --accent-ink:#10151f; --spark:#ffc94d;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.125rem/1.6 "Newsreader",Georgia,serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.05;margin:0}
+
+/* top bar */
+nav{display:flex;gap:1.5rem;justify-content:flex-end;padding:1.25rem 0;font:500 1rem "Bricolage Grotesque",system-ui,sans-serif}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding:3rem 0 4.5rem}
+.hero h1{font-weight:800;font-size:clamp(3.2rem,11vw,7.5rem);letter-spacing:-.03em}
+.hero h1 span{display:block;font-size:.34em;font-weight:500;letter-spacing:-.01em;color:var(--muted);margin-top:1.1rem;max-width:26ch;line-height:1.2}
+.hero p{max-width:40rem;margin:1.75rem 0 0;font-size:1.3rem}
+.bar{display:flex;gap:.6rem;margin-top:2.25rem;flex-wrap:wrap}
+.pill{display:inline-block;padding:.55rem 1.1rem;border-radius:2rem;border:2px solid var(--ink);text-decoration:none;font:500 1rem "Bricolage Grotesque",system-ui,sans-serif}
+.pill.solid{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.pill:hover{background:var(--spark);border-color:var(--spark);color:#172033}
+
+/* sections */
+section{padding:3.5rem 0;border-top:2px solid var(--ink)}
+section>.wrap>h2{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.02em}
+section>.wrap>.lede{color:var(--muted);margin:.6rem 0 2.25rem;max-width:36rem}
+.grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:.5rem;padding:1.4rem;display:flex;flex-direction:column;gap:.7rem}
+.card h3{font-size:1.45rem;font-weight:800}
+.card p{margin:0;color:var(--muted);font-size:1.05rem}
+.card .link{margin-top:auto;font:500 1rem "Bricolage Grotesque",system-ui,sans-serif;color:var(--accent)}
+.tag{font:500 .85rem "Bricolage Grotesque",system-ui,sans-serif;color:var(--muted)}
+
+/* songs */
+.tracks{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.tracks li{display:grid;grid-template-columns:2.6rem 1fr auto;gap:1rem;align-items:center;padding:1rem 0;border-bottom:1px solid var(--line)}
+.play{width:2.6rem;height:2.6rem;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;text-decoration:none;font-size:.95rem}
+.play:hover{background:var(--spark);color:#172033}
+.tracks strong{font:800 1.2rem "Bricolage Grotesque",system-ui,sans-serif}
+.tracks small{display:block;color:var(--muted);font-size:.98rem}
+
+/* books */
+.books{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))}
+.book{display:flex;gap:1.25rem;align-items:flex-start}
+.cover{flex:0 0 7.5rem;aspect-ratio:2/3;border-radius:.25rem .5rem .5rem .25rem;display:grid;place-items:center;text-align:center;padding:.75rem;font:800 1.05rem/1.1 "Bricolage Grotesque",system-ui,sans-serif;background:var(--ink);color:var(--bg);box-shadow:-5px 0 0 var(--accent)}
+.cover.alt{background:var(--spark);color:#172033;box-shadow:-5px 0 0 var(--ink)}
+.book h3{font-size:1.6rem;font-weight:800;margin-bottom:.4rem}
+.book p{margin:0 0 .9rem;color:var(--muted)}
+
+footer{border-top:2px solid var(--ink);padding:2.5rem 0 3rem;color:var(--muted);font-size:1rem}
+footer a{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Sections">
+    <a href="#projects">Projects</a><a href="#music">Music</a><a href="#books">Books</a><a href="#contact">Contact</a>
+  </nav>
+
+  <header class="hero">
+    <!-- EDIT: your name and one-line intro -->
+    <h1>Arthur<span>Software developer. Games, songs and books made with AI.</span></h1>
+    <p>I build games and tools, then keep going: music, a book, and an audiobook version of it. This page collects all of it in one place.</p>
+    <div class="bar">
+      <a class="pill solid" href="#projects">See the projects</a>
+      <a class="pill" href="#music">Listen to the songs</a>
+    </div>
+  </header>
+</div>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="lede">Games and tools I've built. Replace each "#" link with your real page, download or GitHub.</p>
+    <div class="grid">
+      <article class="card">
+        <span class="tag">Game · Unity</span>
+        <h3>Combat Baseball</h3>
+        <p>Baseball with chaos rules: carry your bat, bribe the umpire, watch for landmines in the outfield. Play the AI or a friend.</p>
+        <a class="link" href="#">Play or download</a>
+      </article>
+      <article class="card">
+        <span class="tag">App · Windows</span>
+        <h3>Touch Arcade</h3>
+        <p>A touch-friendly arcade launcher for Windows that opens your game .exe files from big, tappable artwork.</p>
+        <a class="link" href="#">View project</a>
+      </article>
+      <article class="card">
+        <span class="tag">Game · Board</span>
+        <h3>Digital Derby</h3>
+        <p>An LCD-style racing game for the Board platform, built in Unity.</p>
+        <a class="link" href="#">View project</a>
+      </article>
+      <article class="card">
+        <span class="tag">Tool · Python</span>
+        <h3>VR Pinball Launcher</h3>
+        <p>A 2D frontend and Python backend that runs a virtual pinball setup.</p>
+        <a class="link" href="#">View project</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="music">
+  <div class="wrap">
+    <h2>Music</h2>
+    <p class="lede">Songs made with AI. Point each play button at the song's page on Suno, YouTube, Spotify or wherever it lives.</p>
+    <ul class="tracks">
+      <!-- EDIT: copy a <li> for each song -->
+      <li><a class="play" href="#" aria-label="Play Song Title One">&#9654;</a><div><strong>Song title one</strong><small>Genre or mood</small></div><small>3:12</small></li>
+      <li><a class="play" href="#" aria-label="Play Song Title Two">&#9654;</a><div><strong>Song title two</strong><small>Genre or mood</small></div><small>2:48</small></li>
+      <li><a class="play" href="#" aria-label="Play Song Title Three">&#9654;</a><div><strong>Song title three</strong><small>Genre or mood</small></div><small>3:30</small></li>
+    </ul>
+  </div>
+</section>
+
+<section id="books">
+  <div class="wrap">
+    <h2>Books</h2>
+    <p class="lede">The book, in two formats.</p>
+    <div class="books">
+      <div class="book">
+        <div class="cover">Your ebook title</div>
+        <div><h3>Ebook</h3><p>One or two sentences about what the book is and who it's for.</p><a class="pill solid" href="#">Read the ebook</a></div>
+      </div>
+      <div class="book">
+        <div class="cover alt">Your audiobook title</div>
+        <div><h3>Audiobook</h3><p>Same story, narrated. Say how long it runs and who the voice is.</p><a class="pill solid" href="#">Listen</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <p>Want to play, listen or say hello? <a href="mailto:you@example.com">you@example.com</a> &nbsp;·&nbsp; <a href="#">GitHub</a></p>
+    <p>Made by Arthur with a lot of help from AI.</p>
+  </div>
+</footer>
+</body>
+</html>
